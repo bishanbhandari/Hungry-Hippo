@@ -27,7 +27,7 @@ $rows=mysqli_fetch_all($result,MYSQLI_ASSOC);
           <?php echo $element["nutritionInfo"]?>
           <?php echo $element["category"]?>
           <?php if ($element["recommendedForKid"] == 1): ?>
-            <p><span class="badge text-bg-secondary">Recommend for kids</span></p>
+            <p><span class="badge text-bg-secondary">Recommend for kidssss</span></p>
             <?php else:?>
             <p> <span class="badge text-bg-secondary">Nots recommend for kids</span></p>
           <?php endif; ?>
