@@ -1,6 +1,6 @@
 <?php
 $conn=mysqli_connect("localhost","root","bishan44","hungry_hippo");
-$query="SELECT * FROM foods";
+$query="SELECT * FROM foods order by createdAt DESC";
 $result=mysqli_query($conn,$query);
 $rows=mysqli_fetch_all($result,MYSQLI_ASSOC);
 ?>
@@ -18,18 +18,37 @@ $rows=mysqli_fetch_all($result,MYSQLI_ASSOC);
   </script>
 </head>
 <body class="container">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Add-product.php">ADD PRODUCT</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
   <div class="flex">
     <?php foreach( $rows as $element): ?>
       <div class="card flex-item" style="width: 18rem;">
         <img src="<?php echo $element["imageURL"]?>" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><?php echo $element["name"]?></h5>
-          <?php echo $element["nutritionInfo"]?>
           <?php echo $element["category"]?>
+          <?php echo"<br>"?>
+          <?php echo $element["nutritionInfo"]?>
           <?php if ($element["recommendedForKid"] == 1): ?>
-            <p><span class="badge text-bg-secondary">Recommend for kidssss</span></p>
+            <p><span class="badge text-bg-secondary">Recommend for kids</span></p>
             <?php else:?>
-            <p> <span class="badge text-bg-secondary">Nots recommend for kids</span></p>
+            <p> <span class="badge text-bg-secondary">Not recommend for kids</span></p>
           <?php endif; ?>
           <?php  echo $rs= $element["price"]*135,"NRS" ?>
            <?php echo"<br>"?>
